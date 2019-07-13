@@ -34,7 +34,7 @@ export const WeatherLayout = () => {
       setIsLoading(true);
       setError(undefined);
 
-      fetch("", {
+      fetch("/.netlify/functions/getWeather", {
         signal
       })
         .then(response => {
