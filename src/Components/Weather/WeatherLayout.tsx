@@ -80,7 +80,8 @@ export const WeatherLayout = () => {
   }, []);
 
   const day =
-    weather && weather.daily.data.filter(d => moment(d.time).isBefore(now))[0];
+    weather &&
+    weather.daily.data.filter(d => moment.unix(d.time).isBefore(now))[0];
 
   return (
     <div>
@@ -95,10 +96,12 @@ export const WeatherLayout = () => {
             <div>
               <div>{day.summary}</div>
               <div>
-                High: {day.temperatureMax} @ {moment(day.temperatureMaxTime)}
+                High: {Math.round(day.temperatureMax)}&deg;C @
+                {moment.unix(day.temperatureMaxTime).format("hA")}
               </div>
               <div>
-                Low: {day.temperatureLow} @ {moment(day.temperatureLowTime)}
+                Low: {Math.round(day.temperatureLow)}&deg;C @
+                {moment.unix(day.temperatureLowTime).format("hA")}
               </div>
             </div>
           )}

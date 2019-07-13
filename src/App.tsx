@@ -3,6 +3,7 @@ import "./App.css";
 import { TrainTimes } from "./Components/TrainTimes/TrainTimes";
 import { WeatherLayout } from "./Components/Weather/WeatherLayout";
 import styled from "styled-components";
+import { ErrorBoundary } from "./Components/ErrorBounday";
 
 const MyApp = styled.div`
   display: flex;
@@ -12,7 +13,9 @@ const App = () => {
   return (
     <MyApp>
       <TrainTimes />
-      <WeatherLayout />
+      <ErrorBoundary>
+        <WeatherLayout />
+      </ErrorBoundary>
     </MyApp>
   );
 };

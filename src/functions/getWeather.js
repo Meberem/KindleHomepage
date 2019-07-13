@@ -1,16 +1,15 @@
 const fetch = require("node-fetch");
+const { DARK_SKY_API_KEY } = process.env;
 
 exports.handler = async (event, context) => {
   try {
-    const response = await fetch(
-      `https://api.darksky.net/forecast/${
-        process.env.DARK_SKY_API_KEY
-      }/52.5200,13.4049?units=uk2`
-    ).then(res => res.buffer());
+    const uri = `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/52.5200,13.4049?units=uk2`;
+    console.log("Making call with ", uri);
+    const response = await fetch(uri).then(res => res.json());
 
     return {
       statusCode: 200,
-      body: response
+      body: JSON.stringify(response)
     };
   } catch (error) {
     return {
