@@ -43,7 +43,7 @@ export const TrainTimes = () => {
       setIsLoading(true);
       setError(undefined);
 
-      fetch("https://1.bvg.transport.rest/stations/900000110017/departures", {
+      fetch("/.netlify/functions/getDepartures", {
         signal
       })
         .then(response => {

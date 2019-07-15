@@ -11,12 +11,12 @@ const MyApp = styled.div`
 
 const App = () => {
   return (
-    <MyApp>
-      <TrainTimes />
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <MyApp>
+        <TrainTimes />
         <WeatherLayout />
-      </ErrorBoundary>
-    </MyApp>
+      </MyApp>
+    </ErrorBoundary>
   );
 };
 
